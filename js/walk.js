@@ -43,7 +43,7 @@
 
       var symbol = document.createElement('div');
       var text = document.createElement('span');
-      
+
       symbol.style.backgroundColor = color;
       symbol.style.width = "100%";
       symbol.style.height = "36px";
@@ -71,6 +71,8 @@
     });
 
     corslite(stations, function(err, resp) {
+
+      if (err) console.error(err);
       var geojson = JSON.parse(resp.response);
       var tflIcon = new L.icon({
          iconUrl: '/imgs/tfl-marker.png',
@@ -106,12 +108,8 @@
       isochronGeojson = "/data/isochrons/" + name + ".geojson";
       corslite(isochronGeojson, function(err, resp) {
 
-
         if (err) console.error(err);
         var geojson = JSON.parse(resp.response);
-
-        console.log(geojson);
-
 
         var geojsonLayer = L.geoJson(geojson, {
 
