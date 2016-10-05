@@ -65,7 +65,7 @@
 
   function initMarkers() {
 
-    var stations = "/data/london-tube.geojson";
+    var stations = "data/london-tube.geojson";
     var markers = L.markerClusterGroup({
       maxClusterRadius : 40
     });
@@ -75,7 +75,7 @@
       if (err) console.error(err);
       var geojson = JSON.parse(resp.response);
       var tflIcon = new L.icon({
-         iconUrl: '/imgs/tfl-marker.png',
+         iconUrl: 'imgs/tfl-marker.png',
          iconSize: [25, 25]
       });
 
@@ -105,7 +105,7 @@
     var isochron = isochronCache[name];
 
     if (!isochron) {
-      isochronGeojson = "/data/isochrons/" + name + ".geojson";
+      isochronGeojson = "data/isochrons/" + name + ".geojson";
       corslite(isochronGeojson, function(err, resp) {
 
         if (err) console.error(err);
